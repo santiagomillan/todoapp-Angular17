@@ -12,4 +12,6 @@ import { RouterOutlet } from '@angular/router';
 export class LabsComponent {
   welcome = 'Hola todoapp!';
   tasks = ['instalar Angular CLI', 'Crear proyecto', 'Crear Componentes'];
+  name = 'Camila';
+  age = 25;
 }
