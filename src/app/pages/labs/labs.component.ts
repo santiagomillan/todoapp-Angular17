@@ -22,6 +22,12 @@ export class LabsComponent {
     image: 'https://i.ibb.co/vXNxtKW/OIG-2y-9y-Tiej-C-7-Eqkg-Iy.jpg',
   };
 
+  tasksSignal = signal([
+    'instalar Angular CLI',
+    'Crear proyecto',
+    'Crear Componentes',
+  ]);
+
   clickHandler() {
     alert('hola');
   }
