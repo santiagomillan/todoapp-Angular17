@@ -21,4 +21,12 @@ export class LabsComponent {
     age: 25,
     image: 'https://i.ibb.co/vXNxtKW/OIG-2y-9y-Tiej-C-7-Eqkg-Iy.jpg',
   };
+
+  clickHandler() {
+    alert('hola');
+  }
+
+  chageHandler(event: Event) {
+    console.log(event);
+  }
 }
