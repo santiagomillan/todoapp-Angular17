@@ -12,7 +12,7 @@
   <hr/>
   <h2>{{'hola '.repeat(4)}}</h2>
   <p>La suma de  2+2 es {{2+2}}</p>
-  <p>Hola {{name}} y tienes {{age}} años</p>
+  <p>Hola {{name()}} y tienes {{age}} años</p>
   <hr/>
   <img [src]="image" alt="">
   <input type="text" [value]="name">
@@ -29,5 +29,8 @@
   <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
   <p>(keydown shift t)</p>
   <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
-
+  <hr/>
+  <h1>Sinals</h1>
+  <input type="text" [value]="name()" (keydown)="chageHandler($event)">
+  <p>Hola {{name()}} </p>
 </div>

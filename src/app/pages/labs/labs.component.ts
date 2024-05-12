@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 export class LabsComponent {
   welcome = 'Hola todoapp!';
   tasks = ['instalar Angular CLI', 'Crear proyecto', 'Crear Componentes'];
-  name = 'Camila';
+  name = signal('Camila');
   age = 25;
   disabled = true;
   image = 'https://i.ibb.co/vXNxtKW/OIG-2y-9y-Tiej-C-7-Eqkg-Iy.jpg';
@@ -27,7 +27,9 @@ export class LabsComponent {
   }
 
   chageHandler(event: Event) {
-    console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
   }
 
   keydownHandler(event: KeyboardEvent) {
