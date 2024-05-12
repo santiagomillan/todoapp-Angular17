@@ -25,4 +25,9 @@
   <button (dblclick)="clickHandler()">Double me</button>
   <p>(change)</p>
   <input type="number" [value]="person.age" (change)="chageHandler($event)">
+  <p>(keydown)</p>
+  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+  <p>(keydown shift t)</p>
+  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
+
 </div>
