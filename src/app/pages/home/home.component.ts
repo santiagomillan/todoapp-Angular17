@@ -1,4 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  signal,
+  effect,
+  inject,
+  Injector,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from './../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,21 +18,21 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class HomeComponent {
   tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'instalar Angular CLI',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Crear proyecto',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Crear Componentes',
-      completed: false,
-    },
+    // {
+    //   id: Date.now(),
+    //   title: 'instalar Angular CLI',
+    //   completed: false,
+    // },
+    // {
+    //   id: Date.now(),
+    //   title: 'Crear proyecto',
+    //   completed: false,
+    // },
+    // {
+    //   id: Date.now(),
+    //   title: 'Crear Componentes',
+    //   completed: false,
+    // },
   ]);
 
   filter = signal<'all' | 'pending' | 'completed'>('all');
@@ -46,6 +53,36 @@ export class HomeComponent {
     nonNullable: true,
     validators: [Validators.required],
   });
+
+  injector = inject(Injector);
+
+  // constructor() {
+  //   effect(() => {
+  //     const tasks = this.tasks();
+  //     console.log('run effect', tasks);
+  //     localStorage.setItem('tasks', JSON.stringify(tasks));
+  //   });
+  // }
+
+  ngOnInit() {
+    const storage = localStorage.getItem('tasks');
+    if (storage) {
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+    this.trackTasks();
+  }
+
+  trackTasks() {
+    effect(
+      () => {
+        const tasks = this.tasks();
+        console.log('run effect', tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      },
+      { injector: this.injector }
+    );
+  }
 
   changeHandler() {
     if (this.newTaskCtrl.valid) {
