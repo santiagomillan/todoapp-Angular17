@@ -17,11 +17,11 @@ export class LabsComponent {
   age = 25;
   disabled = true;
   image = 'https://i.ibb.co/vXNxtKW/OIG-2y-9y-Tiej-C-7-Eqkg-Iy.jpg';
-  person = {
+  person = signal({
     name: 'Camila',
     age: 25,
     image: 'https://i.ibb.co/vXNxtKW/OIG-2y-9y-Tiej-C-7-Eqkg-Iy.jpg',
-  };
+  });
 
   colorCtrl = new FormControl();
   widthCtrl = new FormControl(50, {

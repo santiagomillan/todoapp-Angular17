@@ -17,14 +17,14 @@
   <img [src]="image" alt="">
   <input type="text" [value]="name">
   <button [disabled]="disabled">Click me</button>
-  <p>person: {{person.name}}</p>
-  <p>age: {{person.age}}</p>
-  <img [src]="person.image" alt="">
+  <p>person: {{person().name}}</p>
+  <p>age: {{person().age}}</p>
+  <img [src]="person().image" alt="">
   <hr/>
   <button (click)="clickHandler()">Click me</button>
   <button (dblclick)="clickHandler()">Double me</button>
   <p>(change)</p>
-  <input type="number" [value]="person.age" (change)="chageHandler($event)">
+  <input type="number" [value]="person().age" (change)="chageHandler($event)">
   <p>(keydown)</p>
   <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
   <p>(keydown shift t)</p>
@@ -46,6 +46,23 @@
   <div *ngIf="name() === 'Camila'">
     My content {{name()}}
   </div>
+
+  @if(name() === 'Camila'){
+    <div>
+      Soy camila nueva sintaxis
+    </div>
+  }
+
+  <h2> if else new </h2>
+  @if (person().name === 'Camila' && person().age > 18){
+    <strong>
+      Soy camila y soy mayor de edad
+    </strong>
+  } @else {
+    <div>
+      Soy camila y soy menor de edad
+    </div>
+  }
 
   <hr/>
   <input type="color" [formControl]="colorCtrl">
