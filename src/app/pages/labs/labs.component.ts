@@ -12,7 +12,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class LabsComponent {
   welcome = 'Hola todoapp!';
-  tasks = ['instalar Angular CLI', 'Crear proyecto', 'Crear Componentes'];
+  tasks = signal([
+    'instalar Angular CLI',
+    'Crear proyecto',
+    'Crear Componentes',
+  ]);
   name = signal('Camila');
   age = 25;
   disabled = true;
